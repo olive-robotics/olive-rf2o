@@ -71,5 +71,9 @@ install(
   DIRECTORY launch  
   DESTINATION share/${PROJECT_NAME})
 
+# Olive Robotics, 2026-11-24: preserve license and provenance in installations.
+install(FILES LICENSE NOTICE SOURCE_PROVENANCE.md SOURCE_MANIFEST.json
+  DESTINATION share/${PROJECT_NAME})
+
 ament_package()
 

@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-# Olive Robotics publication, 2026-11-24; licensed under GNU GPL version 3.
-# Recovered from the installed Olive Humble/Jazzy package; see SOURCE_PROVENANCE.md.
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, OpaqueFunction

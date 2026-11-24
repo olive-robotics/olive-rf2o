@@ -1,0 +1,17 @@
+{
+  "recovered_tag": "ant1-recovered-2026-11-24",
+  "upstream_repository": "https://github.com/MAPIRlab/rf2o_laser_odometry",
+  "upstream_commit": "b38c68e46387b98845ecbfeb6660292f967a00d3",
+  "recovered_files_sha256": {
+    "CMakeLists.txt": "8f54ad484d655d25afcf6cd9ae8575146eff05f45320cf80efd53e3955b3c362",
+    "LICENSE": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
+    "README.md": "374e7e5e0dd9196bc29d26f98497a534edc94345d1c09f664f04a36b4af48fdc",
+    "include/rf2o_laser_odometry/CLaserOdometry2D.hpp": "474d3e2fcc28d84f35be0ff45b1f853bcaaae47b2f55d2034944ee2e12f6cc87",
+    "include/rf2o_laser_odometry/CLaserOdometry2DNode.hpp": "4270a8aaa72f5baf301b5b1065b5e7f148d1b15f95fe31f646c3d4782ca71f83",
+    "launch/rf2o_laser_odometry.launch.py": "71ba77457c001f8cedbb28e572753b862a3935c9ff4eb191f0742aa9b76b0fab",
+    "package.xml": "cf1cd38d584d35ea07523fc4f33eee2260df82f9596ba6a2b275f0c459b61f25",
+    "src/CLaserOdometry2D.cpp": "e4472c348d1bba6b96178f79cb5ee7d4df4cb01f770d8a0420b1b14bee87e268",
+    "src/CLaserOdometry2DNode.cpp": "a58f95ee0657119420d2453b243e293c652d5740562f90dd98585f4b7a6bfe4d"
+  },
+  "deployed_launch_sha256": "7535c97a542422f438326c15fadcc4c1172732b042ef6c737f2b19c3a8786f12"
+}

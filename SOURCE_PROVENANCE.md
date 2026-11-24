@@ -1,71 +1,89 @@
-# Source provenance
+# ANT1 source provenance
 
-Publication date: 2026-11-24.
+Recovery and publication date: 2026-11-24.
 
-## Upstream source
+## Recovered source
 
-Repository: <https://github.com/Adlink-ROS/rf2o_laser_odometry>
+The RF2O package was recovered from an OlixOS filesystem backup:
 
-Branch: `humble-devel`
+```text
+olixos_full_20260914_224342/srv/olixos/opt/olive/hl_ws/tmp_ws/src/navigation/real/rf2o_laser_odometry
+```
 
-Commit: `313bb4c4123bcc0cc2e042f278312b19a3c46f31`
+Its original CMakeLists.txt, package.xml, README, LICENSE, launch file, C++
+source, and headers are preserved byte-for-byte at the tag
+`ant1-recovered-2026-11-24`. That tag also retains the initial publication
+files; the hashes in SOURCE_MANIFEST.json identify the recovered files.
 
-All upstream commits were retained. The files under `src/` and `include/`
-and the original launch file are unchanged from that commit.
-`UPSTREAM_README.md` is an unchanged copy of that commit's README.
-`LICENSE` is the unchanged upstream GNU GPL version 3 text.
+The recovered package was clean in its original navigation repository.
+The last package change was commit
+`e741952b56dca6a32fbd01d5bfe24e6ba4a32cbc`, dated 2026-05-11.
+The two C++ files were last changed in
+`9e7f63f97aa5a1e9f1682420323248241024e8f2`, dated 2025-11-17.
+Only the RF2O package was copied; unrelated navigation source was excluded.
 
-## Olive changes in this publication
+The C++ implementation and headers on `main` remain byte-for-byte identical
+to that recovered package. The deployed launch file on `main` was recovered
+separately from the installed Humble and Jazzy packages; those copies are
+identical and add the `global_tfs` option to the older backup launch file.
 
-- `launch/olive_rf2o.launch.py` was recovered from the installed Olive
-  Humble package. The installed Jazzy launch file has identical contents.
-  Apart from the publication notice immediately after the shebang, its
-  contents are unchanged. It adds namespace-aware topics, frame names,
-  and optional global TF topics.
-- `package.xml` declares `nav_msgs`, Boost, and the Python launch
-  dependencies already used by the existing code and launch files.
-- `CMakeLists.txt` installs the license and attribution/provenance files
-  alongside the package.
-- `README.md`, `NOTICE`, this file, and `.gitignore` were added for this
-  source publication.
+## Identified upstream
 
-## Existing binary releases: correspondence not verified
+Primary upstream: <https://github.com/MAPIRlab/rf2o_laser_odometry>
 
-The publication workspace contained installed Humble and Jazzy packages
-but did not contain their original C++ build sources. The installed
-package version is `0.1.0`.
+Branch: `ros2`
 
-The executables embed these source paths:
+Commit: `b38c68e46387b98845ecbfeb6660292f967a00d3`
+
+The recovered headers, CMakeLists.txt, package.xml, README, and LICENSE match
+this commit exactly. The two recovered C++ files differ only by disabled
+routine logging and a final newline. The recovered launch configuration
+contains the Olive robot namespace changes.
+
+The original MAPIR history is a parent of the recovery commit. The initial
+Adlink ROS 2 baseline is also retained in history, at
+`upstream-humble-313bb4c`. It is not the primary upstream of the recovered
+ANT1 implementation.
+
+## Evidence connecting the recovery to installed packages
+
+The installed Humble and Jazzy packages both report version `0.1.0`, and
+both package.xml files match the recovered manifest byte-for-byte.
+
+The binaries reference these build source directories:
 
 ```text
 /opt/olive/hl_ws/humble/tmp_ws/src/navigation/real/rf2o_laser_odometry
 /opt/olive/hl_ws/jazzy/tmp_ws/src/navigation/real/rf2o_laser_odometry
 ```
 
-The logging source locations embedded in the installed executables
-differ from the imported upstream source. This is evidence that the
-build inputs differed; the original source is needed to identify the
-actual changes. The matching package version alone is not proof of
-source correspondence.
+All observed logging source locations embedded in both binaries match the
+recovered C++ files:
 
-The following SHA-256 fingerprints identify the existing workspace
-artifacts. They are not binaries built from this publication.
-
-| Artifact | SHA-256 |
+| Source | Logging lines |
 | --- | --- |
-| Humble `rf2o_laser_odometry_node` | `0c41b91b4b928d455de9304b001292c06f9c49ba04afcd290d0e3d4f5191699a` |
-| Jazzy `rf2o_laser_odometry_node` | `861f21e9784775bd96f06117d69d6db8bcfd1637e4971463dfa56a2c8049d28b` |
-| Installed launch file, both distributions | `7535c97a542422f438326c15fadcc4c1172732b042ef6c737f2b19c3a8786f12` |
-| Installed `package.xml`, both distributions | `cf1cd38d584d35ea07523fc4f33eee2260df82f9596ba6a2b275f0c459b61f25` |
+| src/CLaserOdometry2DNode.cpp | 24, 125, 179 |
+| src/CLaserOdometry2D.cpp | 68, 842 |
 
-## Remaining work for those binary releases
+The original publisher/timing/pose logs disabled in the recovered source are
+also absent from the installed executables. This evidence connects the
+recovered source to the installed package; a byte-for-byte reproduction of
+the installed executables has not been demonstrated.
 
-Recover the actual source tree and local changes used to build each
-distributed version, together with the relevant build and installation
-scripts. Compare and publish those inputs, then identify them with
-release-specific commits or tags. Preserve any additional third-party
-license notices discovered in those sources.
+| Installed artifact | SHA-256 |
+| --- | --- |
+| Humble rf2o_laser_odometry_node | `0c41b91b4b928d455de9304b001292c06f9c49ba04afcd290d0e3d4f5191699a` |
+| Jazzy rf2o_laser_odometry_node | `861f21e9784775bd96f06117d69d6db8bcfd1637e4971463dfa56a2c8049d28b` |
+| Deployed launch, both distributions | `7535c97a542422f438326c15fadcc4c1172732b042ef6c737f2b19c3a8786f12` |
+| package.xml, both distributions | `cf1cd38d584d35ea07523fc4f33eee2260df82f9596ba6a2b275f0c459b61f25` |
 
-Until that work is complete, this repository is an upstream source
-publication with a recovered Olive launch configuration, rather than
-a verified corresponding-source release for those existing binaries.
+## Publication changes
+
+`main` supplements the recovery with dependency declarations for nav_msgs,
+Boost, and the Python launch modules, installation of license/provenance
+files, publication documentation, and the newer deployed launch file.
+These changes do not alter the recovered C++ source or headers.
+
+No prebuilt executable is distributed in this repository. The package is
+built from the supplied source using CMake/ament and the dependencies
+listed in package.xml. See README.md for build and launch instructions.

@@ -1,27 +1,35 @@
 olive-rf2o
 
-This repository includes rf2o_laser_odometry from:
-https://github.com/Adlink-ROS/rf2o_laser_odometry
-Branch: humble-devel
-Commit: 313bb4c4123bcc0cc2e042f278312b19a3c46f31
-
-Original package authors: Mariano Jaimez and Javier G. Monroy.
+RF2O original package authors: Mariano Jaimez and Javier G. Monroy.
 Original source names Javier G. Monroy / the MAPIR group as maintainer
-and credits modifications to Jeremie Deray.
-ROS 2 port and subsequent contributors are recorded in the preserved
-upstream Git history.
+and credits modifications to Jeremie Deray and the GitHub contributors.
 
-RF2O is distributed under the GNU General Public License, version 3.
-The complete, unchanged license text is included in LICENSE.
-Original source notices have been retained.
+Primary upstream:
+https://github.com/MAPIRlab/rf2o_laser_odometry
+Branch: ros2
+Commit: b38c68e46387b98845ecbfeb6660292f967a00d3
 
-Olive Robotics publication changes, 2026-11-24:
-- Added the recovered Olive robot launch configuration as
-  launch/olive_rf2o.launch.py; the upstream launch file is retained.
-- Added README, NOTICE, and source provenance documentation.
-- Added missing ROS dependency declarations and installation of
-  license, attribution, and provenance files.
+The original MAPIR Git history is preserved, together with the Adlink
+ROS 2 history imported when this source mirror was first prepared.
+Original source notices and the complete GPL version 3 LICENSE are retained.
 
-The C++ algorithm and headers are unchanged from the imported upstream
-commit. Exact correspondence to previously shipped Olive binaries has
-not been verified; see SOURCE_PROVENANCE.md.
+Recovered ANT1 modifications, published by Olive Robotics on 2026-11-24:
+- src/CLaserOdometry2D.cpp: routine timing and pose logs disabled.
+- src/CLaserOdometry2DNode.cpp: routine publication logs disabled.
+- launch/rf2o_laser_odometry.launch.py: robot namespace, frame prefixes,
+  relative scan/odometry topics, and optional global TF topics.
+The recovered C++ files were last committed on 2025-11-17
+(navigation commit 9e7f63f97aa5a1e9f1682420323248241024e8f2).
+The backup launch file was last committed on 2026-05-11
+(navigation commit e741952b56dca6a32fbd01d5bfe24e6ba4a32cbc).
+These are recorded commit dates, not a claim about the first authorship date.
+The C++ source and headers are published byte-for-byte as recovered.
+
+Publication changes made on 2026-11-24:
+- Added README, NOTICE, source provenance, and a source hash manifest.
+- Declared missing nav_msgs, Boost, and Python launch dependencies.
+- Installed LICENSE, NOTICE, and source provenance with the ROS package.
+- Added olive_rf2o.launch.py as an equivalent launch entry point.
+
+This package is distributed under the GNU General Public License, version 3.
+See LICENSE for the full terms and SOURCE_PROVENANCE.md for recovery details.

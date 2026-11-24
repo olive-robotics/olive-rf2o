@@ -8,6 +8,7 @@ from launch_ros.actions import Node
 
 def launch_setup(context, *args, **kwargs):
     namespace = LaunchConfiguration('namespace').perform(context).strip('/')
+    global_tfs = LaunchConfiguration('global_tfs').perform(context).lower() == 'true'
 
     # olive/olixG1/id001 -> olive_olixG1_id001
     frame_prefix = namespace.replace('/', '_')
@@ -34,7 +35,7 @@ def launch_setup(context, *args, **kwargs):
             'init_pose_from_topic': '',
             'freq': 10.0,
         }],
-        remappings=[
+        remappings=[] if global_tfs else [
             ('/tf', 'tf'),
             ('/tf_static', 'tf_static'),
         ],
@@ -49,6 +50,12 @@ def generate_launch_description():
             'namespace',
             default_value='',
             description='Robot namespace, e.g. olive/olixG1/id001',
+        ),
+
+        DeclareLaunchArgument(
+            'global_tfs',
+            default_value='false',
+            description='Use global /tf and /tf_static topics',
         ),
 
         OpaqueFunction(function=launch_setup),
