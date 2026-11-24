@@ -1,0 +1,27 @@
+olive-rf2o
+
+This repository includes rf2o_laser_odometry from:
+https://github.com/Adlink-ROS/rf2o_laser_odometry
+Branch: humble-devel
+Commit: 313bb4c4123bcc0cc2e042f278312b19a3c46f31
+
+Original package authors: Mariano Jaimez and Javier G. Monroy.
+Original source names Javier G. Monroy / the MAPIR group as maintainer
+and credits modifications to Jeremie Deray.
+ROS 2 port and subsequent contributors are recorded in the preserved
+upstream Git history.
+
+RF2O is distributed under the GNU General Public License, version 3.
+The complete, unchanged license text is included in LICENSE.
+Original source notices have been retained.
+
+Olive Robotics publication changes, 2026-11-24:
+- Added the recovered Olive robot launch configuration as
+  launch/olive_rf2o.launch.py; the upstream launch file is retained.
+- Added README, NOTICE, and source provenance documentation.
+- Added missing ROS dependency declarations and installation of
+  license, attribution, and provenance files.
+
+The C++ algorithm and headers are unchanged from the imported upstream
+commit. Exact correspondence to previously shipped Olive binaries has
+not been verified; see SOURCE_PROVENANCE.md.
