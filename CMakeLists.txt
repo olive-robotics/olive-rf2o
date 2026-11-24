@@ -22,7 +22,9 @@ find_package(nav_msgs REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED)
+find_package(eigen3_cmake_module REQUIRED)
 find_package(Eigen3 REQUIRED)
+
 
 set(EXECUTABLE_NAME "rf2o_laser_odometry_node")
 
@@ -36,10 +38,9 @@ include_directories(
   include include/
 )
 
-include_directories(
-  
+include_directories(  
   ${Boost_INCLUDE_DIRS}
-  ${EIGEN3_INCLUDE_DIRS}
+  ##${EIGEN3_INCLUDE_DIRS}
 )
 
 set(DEPENDENCIES
@@ -51,7 +52,10 @@ set(DEPENDENCIES
   "tf2_ros"
   "sensor_msgs"
   "nav_msgs"
+  "eigen3_cmake_module"
 )
+
+##target_include_directories(${PROJECT_NAME} PUBLIC ${Eigen3_INCLUDE_DIRS})
 ament_target_dependencies(${EXECUTABLE_NAME} ${DEPENDENCIES})
 
 ## Declare a cpp library
@@ -65,10 +69,6 @@ install(TARGETS ${EXECUTABLE_NAME}
 
 install(
   DIRECTORY launch  
-  DESTINATION share/${PROJECT_NAME})
-
-# Olive Robotics, 2026-11-24: distribute license and source attribution.
-install(FILES LICENSE NOTICE SOURCE_PROVENANCE.md
   DESTINATION share/${PROJECT_NAME})
 
 ament_package()
